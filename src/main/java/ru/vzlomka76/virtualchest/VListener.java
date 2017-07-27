@@ -8,6 +8,7 @@ import cn.nukkit.event.inventory.InventoryTransactionEvent;
 import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.inventory.SimpleTransactionGroup;
 import cn.nukkit.inventory.Transaction;
+import cn.nukkit.inventory.TransactionGroup;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemApple;
 import cn.nukkit.item.ItemArrow;
@@ -31,8 +32,11 @@ public class VListener implements Listener{
     @EventHandler
     public void onTransaction (InventoryTransactionEvent event){
         for (Transaction transaction : event.getTransaction().getTransactions()){
-            if (transaction instanceof SimpleTransactionGroup && transaction.getInventory() instanceof VirtualInventory){
-                Player player = ((SimpleTransactionGroup) transaction).getSource();
+            if (transaction.getInventory() instanceof VirtualInventory){
+                TransactionGroup transactionGroup = event.getTransaction();
+                if (!(transactionGroup instanceof SimpleTransactionGroup)) continue;
+
+                Player player = ((SimpleTransactionGroup) transactionGroup).getSource();
                 Item item = transaction.getSourceItem(); //Transacted item
 
                 switch (item.getId()){
