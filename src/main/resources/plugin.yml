@@ -1,0 +1,5 @@
+name: VirtualChestExample
+main: ru.vzlomka76.virtualchest.VirtualChest
+version: "0.1"
+author: vzlomka76
+api: ["1.0.0"]
