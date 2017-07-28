@@ -1,6 +1,7 @@
 package ru.vzlomka76.virtualchest.inventory;
 
 import cn.nukkit.Player;
+import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.inventory.CustomInventory;
 import cn.nukkit.inventory.Inventory;
 import cn.nukkit.inventory.InventoryType;
@@ -48,23 +49,23 @@ public class VirtualInventory extends CustomInventory {
       super(new VirtualInventoryHolder(player.getFloorX(), player.getFloorY() - 3, player.getFloorZ(), (Inventory)null), getInventoryType(size));
       this.customName = "";
       ((VirtualInventoryHolder)this.holder).setInventory(this);
-      this.tile = "Chest";
+      this.tile = BlockEntity.CHEST;
       this.block = 54;
       switch(size) {
          case 5:
-            this.tile = "Chest";
+            this.tile = BlockEntity.HOPPER;
             this.block = 154;
             break;
          case 9:
-            this.tile = "Chest";
+            this.tile = BlockEntity.CHEST; //Nukkit don't have dropper blockentity
             this.block = 23;
             break;
          case 27:
-            this.tile = "Chest";
+            this.tile = BlockEntity.CHEST;
             this.block = 54;
             break;
          case 54:
-            this.tile = "Chest";
+            this.tile = BlockEntity.CHEST; //Uhm -_-
             this.block = 54;
             break;
       }
